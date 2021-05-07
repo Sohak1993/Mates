@@ -1,9 +1,9 @@
 const userModel = require('./../models/users')
 
-exports.getAll = (req, res) => {
+exports.login = (req, res) => {
     
-    userModel.getAll().then((dataUser) => {
-        console.log(dataUser)       
-    })    
-    res.end()
+    userModel.login(req.body).then((dataUser) => {
+
+        res.send(dataUser)
+    })
 }

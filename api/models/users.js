@@ -7,7 +7,7 @@ const userSchema = schema({
     firstname: String,
     nickname: String,
     birthdate: Date,
-    email: String,
+    email: String, 
     password: String,
     teams: Array,
     games: Array,
@@ -15,9 +15,10 @@ const userSchema = schema({
 })
 const User = mongoose.model('users', userSchema) //modele mongoose
 
-exports.getAll = () => {
+exports.login = (data) => {
+    
     return db.then(() => {
-        return User.find({}, (err, documents) => {
+        return User.findOne({ email: data.email, password: data.password}, (err, documents) => {
             documents
         })
     }).catch( err => {
